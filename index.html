@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" dir="ltr" class="scroll-smooth">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,9 +8,9 @@
 <script src="https://unpkg.com/lucide@latest"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;600;800&family=Inter:wght@300;400;600;800&display=swap');
 body {
-font-family: 'Inter', sans-serif;
+font-family: 'Inter', 'Heebo', sans-serif;
 background-color: #0f172a; /* slate-900 */
 color: #f8fafc; /* slate-50 */
         }
@@ -22,6 +22,9 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
         }
+/* Language Toggle Logic */
+html[dir="ltr"] .he { display: none !important; }
+html[dir="rtl"] .en { display: none !important; }
 </style>
 </head>
 <body class="antialiased flex flex-col min-h-screen">
@@ -29,13 +32,28 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <nav class="border-b border-slate-800 bg-slate-900/80 backdrop-blur-md sticky top-0 z-50">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="flex justify-between items-center h-16">
-<div class="flex items-center space-x-2">
+<div class="flex items-center gap-2">
 <i data-lucide="shield-check" class="text-white w-8 h-8"></i>
 <span class="font-bold text-xl tracking-tight">WhiteMoney<span class="text-sky-400">Doctrine</span></span>
 </div>
-<div class="flex space-x-4 items-center">
-<a href="#evidence" class="text-sm font-medium text-slate-300 hover:text-white transition">The Evidence</a>
-<a href="#theory" class="text-sm font-medium text-slate-300 hover:text-white transition">PO-OSG Theory</a>
+<div class="flex gap-4 items-center">
+<a href="#evidence" class="text-sm font-medium text-slate-300 hover:text-white transition">
+<span class="en">The Evidence</span>
+<span class="he">הראיות</span>
+</a>
+<a href="#theory" class="text-sm font-medium text-slate-300 hover:text-white transition">
+<span class="en">PO-OSG Theory</span>
+<span class="he">תאוריית PO-OSG</span>
+</a>
+<a href="#formal-model" class="text-sm font-medium text-slate-300 hover:text-white transition hidden sm:inline-block">
+<span class="en">Formal Model</span>
+<span class="he">המודל הפורמלי</span>
+</a>
+<!-- Language Toggle Button -->
+<button onclick="toggleLanguage()" class="ms-2 text-xs font-bold text-sky-400 border border-sky-400/50 rounded px-2 py-1 hover:bg-sky-400/10 transition">
+<span class="en">עברית</span>
+<span class="he">English</span>
+</button>
 </div>
 </div>
 </div>
@@ -45,23 +63,31 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <section class="relative pt-20 pb-16 md:pt-32 md:pb-24 overflow-hidden">
 <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-slate-800 via-slate-900 to-slate-900 -z-10"></div>
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-<div class="inline-flex items-center space-x-2 bg-slate-800/50 rounded-full px-4 py-1.5 border border-slate-700 mb-8">
+<div class="inline-flex items-center gap-2 bg-slate-800/50 rounded-full px-4 py-1.5 border border-slate-700 mb-8">
 <span class="flex h-2 w-2 rounded-full bg-red-500 animate-pulse"></span>
-<span class="text-xs font-semibold uppercase tracking-wider text-slate-300">Systemic Failure Detected</span>
+<span class="text-xs font-semibold uppercase tracking-wider text-slate-300">
+<span class="en">Systemic Failure Detected</span>
+<span class="he">זוהה כשל מערכתי</span>
+</span>
 </div>
 <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
-                    Fraud isn't a bug.<br>
-<span class="gradient-text">It's Architecture.</span>
+<span class="en">Fraud isn't a bug.<br><span class="gradient-text">It's Architecture.</span></span>
+<span class="he">הונאה זה לא באג.<br><span class="gradient-text">זו ארכיטקטורה.</span></span>
 </h1>
 <p class="mt-4 max-w-2xl mx-auto text-xl text-slate-400 mb-10">
-                    Discover the math proving <strong>Willful Blindness</strong>.
+<span class="en">Discover the math proving <strong>Willful Blindness</strong>.</span>
+<span class="he">גלו את המתמטיקה שמוכיחה <strong>עיוורון מכוון</strong>.</span>
 </p>
-<div class="flex justify-center space-x-4">
+<div class="flex justify-center gap-4">
 <a href="#evidence" class="bg-white text-slate-900 hover:bg-slate-200 px-8 py-3 rounded-lg font-bold transition flex items-center">
-<i data-lucide="line-chart" class="mr-2 w-5 h-5"></i> View the Math
+<i data-lucide="line-chart" class="me-2 w-5 h-5"></i>
+<span class="en">View the Math</span>
+<span class="he">צפו במתמטיקה</span>
 </a>
 <a href="#" class="border border-slate-600 hover:border-slate-400 bg-slate-800/50 hover:bg-slate-800 px-8 py-3 rounded-lg font-bold transition flex items-center">
-<i data-lucide="twitter" class="mr-2 w-5 h-5"></i> Read the Thread
+<i data-lucide="twitter" class="me-2 w-5 h-5"></i>
+<span class="en">Read the Thread</span>
+<span class="he">קראו את השרשור</span>
 </a>
 </div>
 </div>
@@ -71,21 +97,27 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="mb-12 md:flex md:items-end md:justify-between">
 <div class="max-w-3xl">
-<h2 class="text-3xl font-bold mb-4 text-sky-400">The Negligence Interval</h2>
+<h2 class="text-3xl font-bold mb-4 text-sky-400">
+<span class="en">The Negligence Interval</span>
+<span class="he">מרווח הרשלנות</span>
+</h2>
 <p class="text-slate-400 text-lg">
-                            This live simulation demonstrates the <strong>PO-OSG (Partially Observable One-Sided Stochastic Game)</strong> model.
-                            While the victim sees fake, optimistic statements (Green), the institution's algorithms detect massive structural anomalies (Blue).
-                            The interval where the blue line crosses the legal duty threshold is proof of intent.
+<span class="en">This live simulation demonstrates the <strong>PO-OSG (Partially Observable One-Sided Stochastic Game)</strong> model. While the victim sees fake, optimistic statements (Green), the institution's algorithms detect massive structural anomalies (Blue). The interval where the blue line crosses the legal duty threshold is proof of intent.</span>
+<span class="he">סימולציה חיה זו מדגימה את מודל ה-<strong>PO-OSG (משחק סטוכסטי חד-צדדי)</strong>. בעוד הקורבן מקבל דוחות מזויפים ואופטימיים (ירוק), האלגוריתמים של המוסד מזהים אנומליות מבניות עצומות (כחול). המרווח שבו הקו הכחול חוצה את סף החובה המשפטית הוא ההוכחה לכוונת זדון.</span>
 </p>
 </div>
 </div>
 <!-- Chart Container -->
 <div class="bg-slate-800 rounded-xl p-4 md:p-6 border border-slate-700 shadow-2xl relative">
-<div class="absolute top-4 right-4 flex items-center space-x-2 bg-slate-900/80 px-3 py-1 rounded-md border border-slate-600 text-xs">
+<div class="absolute top-4 end-4 flex items-center gap-2 bg-slate-900/80 px-3 py-1 rounded-md border border-slate-600 text-xs">
 <div class="w-3 h-3 rounded-full bg-red-500/50 border border-red-500"></div>
-<span class="font-mono text-slate-300">Threshold Breached</span>
+<span class="font-mono text-slate-300">
+<span class="en">Threshold Breached</span>
+<span class="he">הסף נחצה</span>
+</span>
 </div>
-<canvas id="fraudChart" height="100"></canvas>
+<!-- Chart text is kept universally in English for technical accuracy -->
+<canvas id="fraudChart" height="100" dir="ltr"></canvas>
 </div>
 </div>
 </section>
@@ -93,8 +125,14 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <section id="theory" class="py-20 bg-slate-950">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-16">
-<h2 class="text-3xl font-bold mb-4">The White Money <span class="text-sky-400">Doctrine</span></h2>
-<p class="text-slate-400 max-w-2xl mx-auto">Three pillars holding financial institutions accountable in the age of Agentic AI.</p>
+<h2 class="text-3xl font-bold mb-4">
+<span class="en">The White Money <span class="text-sky-400">Doctrine</span></span>
+<span class="he">דוקטרינת <span class="text-sky-400">הכסף הלבן</span></span>
+</h2>
+<p class="text-slate-400 max-w-2xl mx-auto">
+<span class="en">Three pillars holding financial institutions accountable in the age of Agentic AI.</span>
+<span class="he">שלושה עוגנים המחזיקים מוסדות פיננסיים אחראיים בעידן ה-Agentic AI.</span>
+</p>
 </div>
 <div class="grid md:grid-cols-3 gap-8">
 <!-- Card 1 -->
@@ -102,9 +140,13 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <div class="bg-slate-800 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition">
 <i data-lucide="eye-off" class="text-sky-400 w-7 h-7"></i>
 </div>
-<h3 class="text-xl font-bold mb-3">1. Platform Observability</h3>
+<h3 class="text-xl font-bold mb-3">
+<span class="en">1. Platform Observability</span>
+<span class="he">1. תצפית פלטפורמה</span>
+</h3>
 <p class="text-slate-400 leading-relaxed">
-                            Victims operate in a fog of partial data (Belief Traps). Institutions, sitting at the crossroads, see the <strong>Aggregated Variance</strong> of the entire network. They see it all.
+<span class="en">Victims operate in a fog of partial data (Belief Traps). Institutions, sitting at the crossroads, see the <strong>Aggregated Variance</strong> of the entire network. They see it all.</span>
+<span class="he">הקורבנות פועלים בערפל של נתונים חלקיים (מלכודות אמונה). המוסדות, היושבים בצומת, רואים את <strong>השונות המצרפית</strong> של הרשת כולה. הם רואים הכל.</span>
 </p>
 </div>
 <!-- Card 2 -->
@@ -116,9 +158,13 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <path d="M12 16h.01" class="stroke-red-500" stroke-width="3"/>
 </svg>
 </div>
-<h3 class="text-xl font-bold mb-3">2. Protected Capital</h3>
+<h3 class="text-xl font-bold mb-3">
+<span class="en">2. Protected Capital</span>
+<span class="he">2. הון מוגן תכליתית</span>
+</h3>
 <p class="text-slate-400 leading-relaxed">
-                            Pension funds are purpose-protected. Transferred, loaned, or pledged—<strong>the white color does not fade</strong>. Anyone touching it bears a constructive fiduciary duty.
+<span class="en">Pension funds are purpose-protected. Transferred, loaned, or pledged—<strong>the white color does not fade</strong>. Anyone touching it bears a constructive fiduciary duty.</span>
+<span class="he">הון פנסיוני נועד למטרה מוגנת. נויד, הולווה או שועבד — <strong>הצבע הלבן אינו דוהה</strong>. כל מי שנוגע בו נושא בחובת נאמנות קונסטרוקטיבית.</span>
 </p>
 </div>
 <!-- Card 3 -->
@@ -126,29 +172,139 @@ background: linear-gradient(to right, #38bdf8, #818cf8);
 <div class="bg-slate-800 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition">
 <i data-lucide="bot" class="text-sky-400 w-7 h-7"></i>
 </div>
-<h3 class="text-xl font-bold mb-3">3. Structural Misalignment</h3>
+<h3 class="text-xl font-bold mb-3">
+<span class="en">3. Structural Misalignment</span>
+<span class="he">3. חוסר יישור מובנה</span>
+</h3>
 <p class="text-slate-400 leading-relaxed">
-                            Like a "Paperclip Maximizer" in AI, institutions optimize solely for fee extraction, disabling safety parameters. <strong>High Variance = Human Intervention = Mens Rea.</strong>
+<span class="en">Like a "Paperclip Maximizer" in AI, institutions optimize solely for fee extraction, disabling safety parameters. <strong>High Variance = Human Intervention = Mens Rea.</strong></span>
+<span class="he">בדומה ל"ממקסם האטבים" ב-AI, המוסדות מוכוונים רק לגביית עמלות תוך ניטרול בלמים. <strong>שונות גבוהה = התערבות אנושית = כוונה פלילית (Mens Rea).</strong></span>
 </p>
+</div>
+</div>
+</div>
+</section>
+<!-- Deep Dive: Formal Theory & 2026 AI Regulation -->
+<section id="formal-model" class="py-20 bg-slate-900 border-t border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12">
+<!-- Left: PO-OSG Math -->
+<div>
+<div class="flex items-center gap-3 mb-6">
+<div class="bg-sky-500/10 p-2 rounded-lg border border-sky-500/20">
+<i data-lucide="code" class="text-sky-400 w-6 h-6"></i>
+</div>
+<h2 class="text-2xl font-bold">
+<span class="en">Formal PO-OSG Model</span>
+<span class="he">המודל הפורמלי: PO-OSG</span>
+</h2>
+</div>
+<p class="text-slate-400 mb-6 leading-relaxed">
+<span class="en">PO-OSG (Partially Observable One-Sided Stochastic Game) is a zero-sum game model for asymmetric sequential decisions. Player 2 (informed) has full state view, while Player 1 (uninformed) relies on partial beliefs. It addresses manipulation under uncertainty.</span>
+<span class="he">PO-OSG (משחק סטוכסטי חד-צדדי תחת תצפית חלקית) הוא מודל תורת-משחקי סכום-אפס להחלטות אסימטריות רציפות. לשחקן 2 (המיודע) יש תמונת מצב מלאה, בעוד שחקן 1 (הקורבן) נסמך על מידע חלקי. המודל ממפה מניפולציות בתנאי אי-ודאות.</span>
+</p>
+<!-- Tuple Definition -->
+<div class="bg-slate-950 rounded-xl p-6 border border-slate-800 shadow-inner mb-6" dir="ltr">
+<div class="font-mono text-sm text-sky-400 mb-4 border-b border-slate-800 pb-3">
+                                G = (S, A¹, A², T, O, Ω, R, γ, b₀)
+</div>
+<ul class="space-y-3 font-mono text-sm">
+<li><span class="text-white font-bold w-12 inline-block">S</span> <span class="text-slate-400"><span class="en">States (e.g., liquidity levels)</span><span class="he">מצבים (למשל, רמות נזילות)</span></span></li>
+<li><span class="text-white font-bold w-12 inline-block">A¹/A²</span> <span class="text-slate-400"><span class="en">Actions (uninformed: invest; informed: delay)</span><span class="he">פעולות (קורבן: השקעה; נוכל: עיכוב הדיווח)</span></span></li>
+<li><span class="text-white font-bold w-12 inline-block">T</span> <span class="text-slate-400"><span class="en">Stochastic transitions</span><span class="he">מעברים סטוכסטיים</span></span></li>
+<li><span class="text-white font-bold w-12 inline-block">O, Ω</span> <span class="text-slate-400"><span class="en">Observations & Observation function</span><span class="he">תצפיות ופונקציית תצפית</span></span></li>
+<li><span class="text-white font-bold w-12 inline-block">R, γ</span> <span class="text-slate-400"><span class="en">Zero-sum rewards & Discount</span><span class="he">תגמולי סכום-אפס והיוון (משקף לחץ זמן)</span></span></li>
+<li><span class="text-white font-bold w-12 inline-block">b₀</span> <span class="text-slate-400"><span class="en">Initial belief</span><span class="he">אמונה התחלתית</span></span></li>
+</ul>
+</div>
+<!-- Belief Update Equation -->
+<div class="bg-slate-950 rounded-xl p-6 border border-slate-800 shadow-inner overflow-x-auto" dir="ltr">
+<div class="text-slate-500 text-xs font-bold mb-3 uppercase tracking-wider">
+<span class="en">Belief Update (Bayes)</span><span class="he">עדכון אמונה (בייס)</span>
+</div>
+<div class="font-mono text-sm text-sky-300 whitespace-nowrap">
+                                b'(s') = <span class="text-white">[</span> Ω(o | s', a¹, a²) Σ b(s) T(s' | s, a¹, a²) <span class="text-white">]</span> / Pr(o | b, a¹, a²)
+</div>
+</div>
+</div>
+<!-- Right: 2026 Landscape -->
+<div>
+<div class="flex items-center gap-3 mb-6">
+<div class="bg-sky-500/10 p-2 rounded-lg border border-sky-500/20">
+<i data-lucide="cpu" class="text-sky-400 w-6 h-6"></i>
+</div>
+<h2 class="text-2xl font-bold">
+<span class="en">AI in FinReg 2026</span>
+<span class="he">AI ברגולציה פיננסית 2026</span>
+</h2>
+</div>
+<p class="text-slate-400 mb-6 leading-relaxed">
+<span class="en">AI is now essential for fraud intervention, operating with millisecond detection capabilities. Institutions possess a "panoptic" view that aggregates variance across cross-client patterns. Consequently, failure to act is algorithmically proven willful blindness.</span>
+<span class="he">בינה מלאכותית היא כיום חיונית למניעת הונאות, עם זיהוי באלפיות השנייה. מוסדות מחזיקים בתצפית "פנופטית" שאוספת שונות על פני תבניות של מאות לקוחות. לכן, מחדל לפעול הוא עיוורון מכוון המוכח אלגוריתמית.</span>
+</p>
+<div class="space-y-6">
+<div class="border-s-2 border-sky-500 ps-5">
+<h4 class="text-white font-bold mb-2">Agentic & Graph AI</h4>
+<p class="text-slate-400 text-sm leading-relaxed">
+<span class="en">Agentic AI controls autonomous banking operations. Graph AI dynamically spots incoherence and structural anomalies (like Ponzi flows) hidden within standard transactions.</span>
+<span class="he">AI סוכנותי שולט בפעולות בנקאיות אוטונומיות. Graph AI מזהה בזמן אמת חוסר עקביות ואנומליות מבניות (כגון זרימת כספי פונזי) המוסתרות בתוך עסקאות "רגילות".</span>
+</p>
+</div>
+<div class="border-s-2 border-sky-500 ps-5">
+<h4 class="text-white font-bold mb-2">
+<span class="en">The Regulatory Mandate</span>
+<span class="he">המנדט הרגולטורי</span>
+</h4>
+<p class="text-slate-400 text-sm leading-relaxed">
+<span class="en">The U.S. Treasury strictly guides AI governance. The EU AI Act enforces total algorithmic transparency. Over 70% of institutions now utilize GenAI for compliance, stripping away the "we didn't know" defense.</span>
+<span class="he">משרד האוצר האמריקאי מנחה בקפידה את משילות ה-AI. חוק ה-AI האירופי אוכף שקיפות אלגוריתמית מוחלטת. כיום, מעל 70% מהמוסדות משתמשים ב-GenAI לציות, מה שמוחק את הגנת "לא ידענו".</span>
+</p>
+</div>
+<div class="border-s-2 border-sky-500 ps-5">
+<h4 class="text-white font-bold mb-2">
+<span class="en">Approximating the Undecidable</span>
+<span class="he">קירוב הבלתי-כריע</span>
+</h4>
+<p class="text-slate-400 text-sm leading-relaxed mb-3">
+<span class="en">While solving infinite-horizon PO-OSGs is fundamentally undecidable, modern systems use HSVI/POMCP to establish value limits:</span>
+<span class="he">בעוד שפתרון PO-OSGs באופק אינסופי הוא ביסודו בעיה בלתי כריעה (Undecidable), מערכות מודרניות משתמשות ב-HSVI ו-POMCP כדי לקבוע גבולות ערך:</span>
+</p>
+<code class="bg-slate-950 border border-slate-800 px-3 py-2 rounded text-sky-300 text-sm font-mono block w-fit" dir="ltr">
+                                    V(b) = max(π¹) min(π²) E[Σ γᵗ rᵗ]
+</code>
+</div>
+</div>
 </div>
 </div>
 </div>
 </section>
 </main>
 <!-- Footer -->
-<footer class="bg-slate-900 border-t border-slate-800 py-12">
+<footer class="bg-slate-950 border-t border-slate-800 py-12">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row justify-between items-center">
-<div class="flex items-center space-x-2 mb-4 md:mb-0">
+<div class="flex items-center gap-2 mb-4 md:mb-0">
 <i data-lucide="shield-check" class="text-white w-6 h-6"></i>
 <span class="font-bold text-slate-300">WhiteMoney<span class="text-sky-400">Doctrine</span></span>
 </div>
 <div class="text-slate-500 text-sm">
-                Turning the "Hot Mess" into a Cold Case for justice. Academic paper in progress (2026).
+<span class="en">Turning the "Hot Mess" into a Cold Case for justice. Academic paper in progress (2026).</span>
+<span class="he">הופכים את ה-"Hot Mess" ל-Cold Case של צדק. מאמר אקדמי בתהליך (2026).</span>
 </div>
 </div>
 </footer>
 <!-- Initialize Icons & Chart logic -->
 <script>
+// Language Toggle Function
+function toggleLanguage() {
+const htmlTag = document.documentElement;
+if (htmlTag.getAttribute('dir') === 'rtl') {
+                htmlTag.setAttribute('dir', 'ltr');
+                htmlTag.setAttribute('lang', 'en');
+            } else {
+                htmlTag.setAttribute('dir', 'rtl');
+                htmlTag.setAttribute('lang', 'he');
+            }
+        }
 // Initialize Lucide Icons
         lucide.createIcons();
 // ---------------------------------------------------------
