@@ -36,7 +36,8 @@ html[dir="rtl"] .en { display: none !important; }
 <i data-lucide="shield-check" class="text-white w-8 h-8"></i>
 <span class="font-bold text-xl tracking-tight">WhiteMoney<span class="text-sky-400">Doctrine</span></span>
 </div>
-<div class="flex gap-4 items-center">
+<!-- Desktop Nav Links -->
+<div class="hidden md:flex gap-4 items-center">
 <a href="#evidence" class="text-sm font-medium text-slate-300 hover:text-white transition">
 <span class="en">The Evidence</span>
 <span class="he">הראיות</span>
@@ -45,16 +46,46 @@ html[dir="rtl"] .en { display: none !important; }
 <span class="en">PO-OSG Theory</span>
 <span class="he">תאוריית PO-OSG</span>
 </a>
-<a href="#formal-model" class="text-sm font-medium text-slate-300 hover:text-white transition hidden sm:inline-block">
+<a href="#formal-model" class="text-sm font-medium text-slate-300 hover:text-white transition">
 <span class="en">Formal Model</span>
 <span class="he">המודל הפורמלי</span>
 </a>
-<!-- Language Toggle Button -->
-<button onclick="toggleLanguage()" class="ms-2 text-xs font-bold text-sky-400 border border-sky-400/50 rounded px-2 py-1 hover:bg-sky-400/10 transition">
+<!-- Language Toggle (Desktop) -->
+<button onclick="toggleLanguage()" class="ms-2 flex items-center gap-1.5 text-sm font-bold text-sky-400 bg-sky-500/10 border border-sky-400/40 rounded-full px-3 py-1.5 hover:bg-sky-500/20 transition">
+<i data-lucide="globe" class="w-4 h-4"></i>
 <span class="en">עברית</span>
 <span class="he">English</span>
 </button>
 </div>
+<!-- Mobile: Language Toggle + Hamburger -->
+<div class="flex items-center gap-2 md:hidden">
+<button onclick="toggleLanguage()" class="flex items-center gap-1.5 text-sm font-bold text-sky-400 bg-sky-500/10 border border-sky-400/40 rounded-full px-3 py-1.5 hover:bg-sky-500/20 transition">
+<i data-lucide="globe" class="w-4 h-4"></i>
+<span class="en">עב</span>
+<span class="he">EN</span>
+</button>
+<button onclick="toggleMenu()" id="menuBtn" class="text-slate-300 hover:text-white p-2 rounded-lg hover:bg-slate-800 transition">
+<i data-lucide="menu" class="w-6 h-6" id="menuIcon"></i>
+<i data-lucide="x" class="w-6 h-6 hidden" id="closeIcon"></i>
+</button>
+</div>
+</div>
+</div>
+<!-- Mobile Dropdown Menu -->
+<div id="mobileMenu" class="hidden md:hidden border-t border-slate-800 bg-slate-900/95 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 py-4 flex flex-col gap-3">
+<a href="#evidence" onclick="closeMenu()" class="text-base font-medium text-slate-300 hover:text-white transition py-2 border-b border-slate-800">
+<span class="en">The Evidence</span>
+<span class="he">הראיות</span>
+</a>
+<a href="#theory" onclick="closeMenu()" class="text-base font-medium text-slate-300 hover:text-white transition py-2 border-b border-slate-800">
+<span class="en">PO-OSG Theory</span>
+<span class="he">תאוריית PO-OSG</span>
+</a>
+<a href="#formal-model" onclick="closeMenu()" class="text-base font-medium text-slate-300 hover:text-white transition py-2">
+<span class="en">Formal Model</span>
+<span class="he">המודל הפורמלי</span>
+</a>
 </div>
 </div>
 </nav>
@@ -70,7 +101,7 @@ html[dir="rtl"] .en { display: none !important; }
 <span class="he">זוהה כשל מערכתי</span>
 </span>
 </div>
-<h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
+<h1 class="text-3xl sm:text-5xl md:text-7xl font-extrabold tracking-tight mb-6">
 <span class="en">Fraud isn't a bug.<br><span class="gradient-text">It's Architecture.</span></span>
 <span class="he">הונאה זה לא באג.<br><span class="gradient-text">זו ארכיטקטורה.</span></span>
 </h1>
@@ -78,13 +109,13 @@ html[dir="rtl"] .en { display: none !important; }
 <span class="en">Discover the math proving <strong>Willful Blindness</strong>.</span>
 <span class="he">גלו את המתמטיקה שמוכיחה <strong>עיוורון מכוון</strong>.</span>
 </p>
-<div class="flex justify-center gap-4">
-<a href="#evidence" class="bg-white text-slate-900 hover:bg-slate-200 px-8 py-3 rounded-lg font-bold transition flex items-center">
+<div class="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4">
+<a href="#evidence" class="bg-white text-slate-900 hover:bg-slate-200 px-8 py-3 rounded-lg font-bold transition flex items-center justify-center">
 <i data-lucide="line-chart" class="me-2 w-5 h-5"></i>
 <span class="en">View the Math</span>
 <span class="he">צפו במתמטיקה</span>
 </a>
-<a href="#" class="border border-slate-600 hover:border-slate-400 bg-slate-800/50 hover:bg-slate-800 px-8 py-3 rounded-lg font-bold transition flex items-center">
+<a href="#" class="border border-slate-600 hover:border-slate-400 bg-slate-800/50 hover:bg-slate-800 px-8 py-3 rounded-lg font-bold transition flex items-center justify-center">
 <i data-lucide="twitter" class="me-2 w-5 h-5"></i>
 <span class="en">Read the Thread</span>
 <span class="he">קראו את השרשור</span>
@@ -136,7 +167,7 @@ html[dir="rtl"] .en { display: none !important; }
 </div>
 <div class="grid md:grid-cols-3 gap-8">
 <!-- Card 1 -->
-<div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group">
+<div class="bg-slate-900 p-5 md:p-8 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group">
 <div class="bg-slate-800 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition">
 <i data-lucide="eye-off" class="text-sky-400 w-7 h-7"></i>
 </div>
@@ -150,7 +181,7 @@ html[dir="rtl"] .en { display: none !important; }
 </p>
 </div>
 <!-- Card 2 -->
-<div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group">
+<div class="bg-slate-900 p-5 md:p-8 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group">
 <div class="bg-slate-800 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7">
 <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2-1 4-3 6-4 2 1 4 3 6 4a1 1 0 0 1 1 1z" class="stroke-white"/>
@@ -168,7 +199,7 @@ html[dir="rtl"] .en { display: none !important; }
 </p>
 </div>
 <!-- Card 3 -->
-<div class="bg-slate-900 p-8 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group">
+<div class="bg-slate-900 p-5 md:p-8 rounded-2xl border border-slate-800 hover:border-sky-500/50 transition group">
 <div class="bg-slate-800 w-14 h-14 rounded-lg flex items-center justify-center mb-6 group-hover:bg-sky-500/20 transition">
 <i data-lucide="bot" class="text-sky-400 w-7 h-7"></i>
 </div>
@@ -304,6 +335,24 @@ if (htmlTag.getAttribute('dir') === 'rtl') {
                 htmlTag.setAttribute('dir', 'rtl');
                 htmlTag.setAttribute('lang', 'he');
             }
+        }
+
+// Mobile Menu Toggle
+function toggleMenu() {
+const menu = document.getElementById('mobileMenu');
+const menuIcon = document.getElementById('menuIcon');
+const closeIcon = document.getElementById('closeIcon');
+            menu.classList.toggle('hidden');
+            menuIcon.classList.toggle('hidden');
+            closeIcon.classList.toggle('hidden');
+        }
+function closeMenu() {
+const menu = document.getElementById('mobileMenu');
+const menuIcon = document.getElementById('menuIcon');
+const closeIcon = document.getElementById('closeIcon');
+            menu.classList.add('hidden');
+            menuIcon.classList.remove('hidden');
+            closeIcon.classList.add('hidden');
         }
 // Initialize Lucide Icons
         lucide.createIcons();
